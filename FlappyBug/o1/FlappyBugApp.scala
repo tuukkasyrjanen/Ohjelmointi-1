@@ -13,19 +13,20 @@ object FlappyBugApp extends App {
   val tree       = trunk.onto(foliage, TopCenter, Center)
   val rootedTree = tree.onto(ground, BottomCenter, new Pos(ViewWidth / 2, 30))
   val scenery    = sky.place(rootedTree, BottomLeft, BottomLeft)
-
-
   val bugPic = Pic("ladybug.png")
-
 
   def rockPic(obstacle: Obstacle) = circle(obstacle.radius * 2, Black)
 
+  val newGame = new Game
 
-  // INSERT YOUR OWN CODE BELOW.
+  val gui = new View(newGame,"FlappyBug") {
+    def makePic = {
+      (scenery.place(bugPic,newGame.bug.pos)).place(rockPic(newGame.obstacle),newGame.obstacle.pos)
+    }
+  }
 
 
-
-
+  gui.start()
 
 
 }
