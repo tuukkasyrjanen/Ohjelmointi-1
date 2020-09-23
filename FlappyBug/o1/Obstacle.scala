@@ -4,12 +4,14 @@ import constants._
 
 // This class is introduced in Chapter 2.6.
 
-class Obstacle(val radius: Int, var pos: Pos) {
+class Obstacle(val radius: Int, private var currentPos: Pos) {
+
+  def pos =  this.currentPos
 
   def approach() = {
-    this.pos = this.pos.addX(-ObstacleSpeed)
+    this.currentPos = this.currentPos.addX(-ObstacleSpeed)
   }
 
-  override def toString = "center at " + this.pos + ", radius " + this.radius
+  override def toString = "center at " + this.currentPos + ", radius " + this.radius
 
 }
