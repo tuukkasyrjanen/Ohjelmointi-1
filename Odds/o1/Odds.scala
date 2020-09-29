@@ -27,4 +27,20 @@ class Odds(val wont: Int, val will: Int) {
   def either(tod : Odds) = {
     new Odds((this.wont * tod.wont),(this.wont * tod.will + this.will * tod.wont + this.will * tod.will))
   }
+
+  def isLikely = {
+    (probability > 0.5)
+  }
+
+  def isLikelierThan(toinen: Odds)= {
+    toinen.probability < this.probability
+  }
+
+  def moneyline = {
+    if (probability <= 0.5)
+      (100 * ((1.0 * this.wont) / this.will)).toInt
+    else
+      (-100 * ((1.0 * this.will) / this.wont)).toInt
+
+  }
 }

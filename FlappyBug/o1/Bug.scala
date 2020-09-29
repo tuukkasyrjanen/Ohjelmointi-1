@@ -8,7 +8,9 @@ class Bug(private var currentPos: Pos) {
   def pos = this.currentPos
 
   def fall() = {
-    yVelocity = yVelocity + 2
+    if (pos.y != 350) {
+      yVelocity = yVelocity + 2
+    }
     move(yVelocity)
   }
   def flap(nousu: Double) ={

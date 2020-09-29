@@ -27,12 +27,15 @@ object FlappyBugApp extends App {
       (background.place(bugPic,newGame.bug.pos)).place(rockPic(newGame.obstacle),newGame.obstacle.pos)
     }
     override def onKeyDown(painettu: Key) = {
-      newGame.activateBug()
+      if (painettu == Key.Space)
+        newGame.activateBug()
     }
     override def onTick() = {
       newGame.timePasses()
       this.background = this.background.shiftLeft(moveScenery)
     }
+
+    override def isDone = newGame.isLost
   }
 
 

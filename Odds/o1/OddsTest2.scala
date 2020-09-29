@@ -12,11 +12,17 @@ object OddsTest2 extends App {
   println("Please enter the odds of the second event as two integers on separate lines.")
   val second = new Odds(readInt(), readInt())
 
-  /*
-  println("The first event is likelier than the second: " + first.isLikelierThan(second))
-  println("The first event is odds-on to happen: " + first.isLikely)
-  println("The second event is odds-on to happen: " + second.isLikely)
-  */
+  if (first.isLikelierThan(second)) {
+    println("The first event is likelier than the second.")
+  }
+  else if(second.isLikelierThan(first)){
+    println("The first event is not likelier than the second.")
+  }
+  else{
+    println("The first event is not likelier than the second.")
+  }
+  if (first.isLikely && second.isLikely) {
+    println("Each of the events is odds-on to happen.")
+  }
   println("Thank you for using OddsTest2. Please come back often. Have a nice day!")
-
 }

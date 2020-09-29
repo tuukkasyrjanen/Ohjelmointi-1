@@ -5,6 +5,7 @@ package o1
 class Tilaus(val numero: Int, val tilaaja: Asiakas) {
 
   var kokonaishinta = 0.0   // kokooja
+  var onPika = false
 
   def lisaaTuote(kappalehinta: Double, lukumaara: Int) = {
     this.kokonaishinta = this.kokonaishinta + kappalehinta * lukumaara

@@ -5,7 +5,7 @@ import constants._
 class Game {
 
   val bug = new Bug(new Pos(100,40))
-  val obstacle = new Obstacle(ObstacleStartRadius,new Pos(1000,100))
+  val obstacle = new Obstacle(ObstacleStartRadius)
 
   def timePasses() = {
     bug.fall()
@@ -15,5 +15,7 @@ class Game {
   def activateBug() = {
     bug.flap(15)
   }
+
+  def isLost = this.obstacle.touches(this.bug)
 
 }

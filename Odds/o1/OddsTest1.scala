@@ -17,6 +17,7 @@ object OddsTest1 extends App {
   println("The odds you entered are:")
   println("In fractional format: " + tod.fractional)
   println("In decimal format: " + tod.decimal)
+  println("In moneyline format: " + tod.moneyline)
   println("Event probability: " + tod.probability)
   println("Reverse odds: " + tod.not.fractional)
   println("Odds of happening twice: " + tod.both(tod))
