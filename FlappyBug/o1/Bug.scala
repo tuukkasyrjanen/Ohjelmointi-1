@@ -15,8 +15,10 @@ class Bug(private var currentPos: Pos) {
   }
   def flap(nousu: Double) ={
     yVelocity = -nousu
-
   }
+
+  def isInBounds :Boolean = (currentPos.y > 0 && currentPos.y < 350)
+
   def move(arvo :Double)= {
     this.currentPos = this.currentPos.addY(arvo).clampY(0,350)
   }

@@ -24,7 +24,13 @@ object FlappyBugApp extends App {
     var background = scenery
 
     def makePic = {
-      (background.place(bugPic,newGame.bug.pos)).place(rockPic(newGame.obstacle),newGame.obstacle.pos)
+      var pic = background
+      // (background.place(bugPic,newGame.bug.pos)).place(rockPic(newGame.obstacle),newGame.obstacle.pos)
+      for(obstacle <- newGame.obstacles){
+        pic = pic.place(rockPic(obstacle), obstacle.pos)
+      }
+      pic.place(bugPic,newGame.bug.pos)
+
     }
     override def onKeyDown(painettu: Key) = {
       if (painettu == Key.Space)

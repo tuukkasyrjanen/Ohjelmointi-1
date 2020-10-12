@@ -98,17 +98,20 @@ class VendingMachine(var bottlePrice: Int, private var bottleCount: Int) {
     * transaction by resetting the amount of inserted cash to zero.
     * @return the amount of money (0 or more) given to the buyer as change,
     *         or a negative value to signal an unsuccessful purchase */
+
   def sellBottle() = {  // alternative implementations for this method will be discussed in later chapters
     if (this.isSoldOut) {
-      -1
-    } else if (!this.enoughMoneyInserted) {
-      -1
-    } else {
-      this.earnedCash = this.earnedCash + this.bottlePrice
-      this.bottleCount = this.bottleCount - 1
+      None
+    }
+    else if (!this.enoughMoneyInserted) {
+      None
+    }
+    else {
+      this.earnedCash += this.bottlePrice
+      this.bottleCount -= 1
       val changeGiven = this.insertedCash - this.bottlePrice    // temporary
       this.insertedCash = 0
-      changeGiven
+      Some(changeGiven)
     }
   }
 
