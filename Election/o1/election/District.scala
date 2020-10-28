@@ -9,25 +9,10 @@ class District(val name: String, val seats: Int, val candidates: Vector[Candidat
 
   override def toString = (s"$name: ${candidates.length} candidates, $seats seats")
 
-  def printCandidates() = {
-    for (candidate <- candidates){
-      println(candidate.toString)
-    }
+  def printCandidates() = candidates.foreach(n => println(n.toString))
 
-  }
 
-  def candidatesFrom(party :String) :Vector[Candidate]= {
-    val buffer = Buffer[Candidate]()
-    var count = 0
-
-    for (candidate <- candidates){
-      if (candidate.party == party){
-        buffer += candidate
-      }
-      count += 1
-    }
-    buffer.toVector
-  }
+  def candidatesFrom(party :String) :Vector[Candidate] =  candidates.filter(n => n.party == party)
 
   def topCandidate :Candidate = {
     var mostVotes = 0
@@ -43,20 +28,10 @@ class District(val name: String, val seats: Int, val candidates: Vector[Candidat
   }
 
   def totalVotes(party :String) :Int = {
-    var votesCount = 0
-    for (candidate <- candidates){
-      if (candidate.party == party){
-        votesCount += candidate.votes
-      }
-    }
-    votesCount
+    candidates.foldLeft(0)((sum, next) => if(next.party == party) {sum + next.votes} else{sum})
   }
 
   def totalVotes :Int = {
-    var votesCount = 0
-    for (candidate <- candidates){
-        votesCount += candidate.votes
-    }
-    votesCount
+    candidates.foldLeft(0)((sum, next) => sum + next.votes)
   }
 }

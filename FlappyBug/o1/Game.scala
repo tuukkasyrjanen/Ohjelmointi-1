@@ -9,9 +9,7 @@ class Game {
 
   def timePasses() = {
     bug.fall()
-    for (obstacle <- obstacles){
-      obstacle.approach()
-    }
+    obstacles.map(n => n.approach())
   }
 
   def activateBug() = {
@@ -19,13 +17,17 @@ class Game {
   }
 
   def isLost = {
-    var lost = false
-    for(obstacle <- obstacles){
-      if (obstacle.touches(this.bug) || !this.bug.isInBounds){
-        lost = true
-      }
-    }
-  lost
+  //  var lost = false
+  //  for(obstacle <- obstacles){
+  //    if (obstacle.touches(this.bug) || !this.bug.isInBounds){
+  //      lost = true
+  //    }
+  //  }
+  //lost
+  obstacles.exists(n => n.touches(this.bug) || !this.bug.isInBounds)
+
   }
+
+
 
 }

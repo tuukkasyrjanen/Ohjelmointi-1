@@ -14,6 +14,17 @@ class AuctionHouse(val name: String) {
 
   private val items = Buffer[EnglishAuction]()
 
+  def findAll(checkCriterion: EnglishAuction => Boolean) = {
+    val found = Buffer[EnglishAuction]()
+    for (currentItem <- this.items) {
+      if (checkCriterion(currentItem)) {
+        found += currentItem
+      }
+    }
+    found.toVector
+  }
+
+
 
   /** Adds the given auction to the auction house. */
   def addItem(item: EnglishAuction): Unit = {

@@ -24,12 +24,18 @@ object FlappyBugApp extends App {
     var background = scenery
 
     def makePic = {
-      var pic = background
+      //var pic = background
       // (background.place(bugPic,newGame.bug.pos)).place(rockPic(newGame.obstacle),newGame.obstacle.pos)
-      for(obstacle <- newGame.obstacles){
-        pic = pic.place(rockPic(obstacle), obstacle.pos)
-      }
+      //for(obstacle <- newGame.obstacles){
+      //  pic = pic.place(rockPic(obstacle), obstacle.pos)
+      //}
+      //pic.place(bugPic,newGame.bug.pos)
+
+      //newGame.obstacles.foreach(next => pic = pic.place(rockPic(next), next.pos))
+
+      var pic = newGame.obstacles.foldLeft(background)((pic, next) => pic.place(rockPic(next), next.pos))
       pic.place(bugPic,newGame.bug.pos)
+
 
     }
     override def onKeyDown(painettu: Key) = {
