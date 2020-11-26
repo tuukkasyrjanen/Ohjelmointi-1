@@ -13,7 +13,7 @@ import o1.gui.EverpresentTooltips
   * It then uses [[SkyPic]] to turn that data into a [[o1.Pic Pic]]. */
 object StarryApp extends App {
 
-  val starDataFolder = "test" // You can use either "northern" or "test" here.
+  val starDataFolder = "northern" // You can use either "northern" or "test" here.
 
   val dataFolderPath = s"o1/stars/$starDataFolder/"
 

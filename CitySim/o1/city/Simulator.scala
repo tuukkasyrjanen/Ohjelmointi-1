@@ -108,30 +108,6 @@ class Simulator {
    disResidents.toVector
   }
 
-//    def isDissatisfied(osoite : GridPos) :Boolean = {
-//      var naapurit :Vector[Demographic] = this.cityMap.neighbors(osoite,true)
-//      var goodGuys = 0
-//
-//      for(a <- naapurit){
-//        if (this.cityMap.elementAt(osoite) == a){
-//          goodGuys += 1
-//        }
-//      }
-//      val percentage = 100.0 * (((goodGuys).toDouble) / ((naapurit.size).toDouble))
-//      !(percentage >= similarityDesired)
-//    }
-//
-//    for (address <- this.allAddresses){
-//      if (this.cityMap.elementAt(address) != Vacant){
-//        if (isDissatisfied(address)) {
-//          (disResidents += address)
-//        }
-//      }
-//    }
-
-
-
-
   /** Advances the most recently launched simulation by one step, moving all dissatisfied
     * households to vacant locations on the grid. During the simulation step, the dissatisfied
     * households move one at a time, in random order, each receiving a random home among the
@@ -165,8 +141,9 @@ class Simulator {
     * and whose values list all the locations where that demographic is present.
     *
     * '''Note to students: This method will only be implemented in Chapter 9.2. You won't need it before that.''' */
-  def residents: Map[Demographic, Vector[GridPos]] = ??? // TODO: implementation missing
-
+  def residents: Map[Demographic, Vector[GridPos]] = {
+    allAddresses.groupBy(this.cityMap.elementAt(_))
+  }
 
   /** Returns the proportion of satisfied residents in the city. For example, a return value
     * of 0.0 means that nobody is satisfied, 1.0 that everyone is, and 0.95 that most are.

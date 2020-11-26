@@ -16,4 +16,11 @@ class Society(val name: String) {
 
   // TODO: add yearOfDeath as instructed in Chapter 8.4.
 
+  def yearOfDeath(id :Int) :Option[Int] ={
+    val memberDead = members.get(id)
+    memberDead match {
+      case Some(member) => member.yearOfDeath
+      case None         => None
+    }
+  }
 }

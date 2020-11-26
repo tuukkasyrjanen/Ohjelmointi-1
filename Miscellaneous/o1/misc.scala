@@ -24,4 +24,17 @@ object misc { // These definitions at the top are discussed in Chapter 5.2.
     }
     retVal
   }
+
+  def toMinsAndSecs(luku :Int) ={
+    var min = luku / 60
+    var sec = luku - min*60
+    (min,sec)
+  }
+
+  def isAscending(list : Vector[Int]) :Boolean = {
+    for (n <- 0 until list.size -1) {
+       if (list(n) > list(n+1)) return false
+    }
+    true
+  }
 }

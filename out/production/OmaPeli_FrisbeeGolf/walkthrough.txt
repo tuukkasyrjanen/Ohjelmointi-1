@@ -1,0 +1,128 @@
+﻿******************************
+******Scala DiscGolfPark******
+******************************
+
+****************
+**Instructions**
+****************
+
+The goal of this game is to play the disc golf course and reach a score of even or under par (12). 
+If you don’t reach the goal, get injured or quit the game, you won’t win.
+
+There are random events in the game, which occurs with a chance of 1/10 during each throw. 
+Some of these events will increase your confidence, which increases your chances of completing harder shots (i.e. hole in one). 
+Some of them can take you further on the fairway. You can also increase your confidence by practicing in each of the practice areas.
+
+After entering the first tee of the course, you cannot go back. You can only advance forward in the course.
+
+In the beginning, you have 3 discs in your bag: aviar (putter), md3 (approach disc) and destroyer (distance driver). 
+Before each throw you have to select a disc which you throw. After selecting, you can throw the disc with the given throwing styles. After each throw, one throw is added to your score. 
+
+In some of the cases, selecting a different disc or a different throwing style has different output (disc lands into a lake or it’s a fairway hit). 
+It also depends on the current confidence level, which varies between -2 to 5.
+
+
+***************
+**Walkthrough**
+***************
+
+
+Note that this walkthrough assumes that you finish the practice area with +3 confidence points. 
+If you don’t want to do the practice area but want to follow this walkthrough, then add +3 to def confidenceBoost in the code.
+
+Also, it’s possible that your putts miss and then you have to rethrow. This is happening with a possibility of; succes: (4 + confidence)/10 fail: 1 - succes. 
+And it’s also possible that if you have high enough confidence and disc selection you can throw hole in one for example. If random event occurs, you can skip it by ignoring it or doing it by following the guidance in the UI.
+
+
+**********
+Practicing
+**********
+(to increase your confidence (+3) before the game. You should do this since the walkthrough depends on this)
+
+
+go east                 (Practice area)
+go north                (Practice area - Putting)
+select aviar            (If you use anything else than a putter, you get banned from the practice
+                         area and cannot throw there anymore)
+practice                (To throw a practice throw. +1 confidence)
+go south                (Practice area)
+go south                (Practice area - Approach)
+select md3              (Same thing, only use approach disc)
+practice                (To throw a practice throw. +1 confidence)
+go north                (Practice area)
+go east                 (Practice area - driving)
+select destroyer        (Same thing, only use distance driver)
+Practice                (To throw a practice throw. +1 confidence)
+go west                 (Practice area)
+go west                 (Entrance)
+
+
+**********
+The course
+**********
+(cannot go back to practice area)
+
+
+go north                (1st teepad)
+select md3
+throw backhand
+walk
+get  md3
+select md3
+throw forehand
+walk
+get md3
+select aviar
+throw putt              (if successful, skip to **)
+walk
+get aviar
+select aviar
+throw tap in**
+walk
+get aviar
+
+
+go southeast            (2nd teepad)
+select destroyer
+throw forehand
+walk
+get destroyer
+select destroyer
+Throw backhand
+Walk
+Get destroyer
+select aviar
+throw putt              (if successful, skip to **)
+walk
+get aviar
+select aviar
+throw tap in
+**walk
+get aviar
+
+
+go west                 (3rd teepad)
+select destroyer
+throw powershot
+walk
+get destroyer
+select aviar
+throw putt              (if successful, skip to **)
+walk
+get aviar
+select aviar
+throw tap in
+**walk
+get aviar
+go south
+
+
+********
+--------
+You Won!
+--------
+********
+
+Note that this was just one option to finish the course. There are lots of outputs which depend on your disc selection, throw selection and random events.
+
+Thank you for playing!

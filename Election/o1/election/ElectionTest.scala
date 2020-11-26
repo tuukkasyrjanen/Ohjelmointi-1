@@ -45,7 +45,7 @@ object ElectionTest extends App {
   // THE FOLLOWING CODE IS ASSOCIATED WITH CHAPTER 9.2.
   // DON'T UNCOMMENT IT BEFORE YOU REACH THAT CHAPTER.
 
-  /*
+
 
   // 1/2
 
@@ -58,8 +58,8 @@ object ElectionTest extends App {
   println("\nTotal number of votes for each party:")
   println(helsinki.votesByParty.mkString("\t"))
 
-   */
-  /*
+
+
 
   // 2/2
 
@@ -76,5 +76,5 @@ object ElectionTest extends App {
   println("\nThe elected candidates, in order by distribution figure:")
   println(helsinki.electedCandidates.map( _.name ).mkString(", "))
 
-   */
+
 }

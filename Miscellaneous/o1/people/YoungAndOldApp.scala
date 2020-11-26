@@ -38,11 +38,11 @@ object YoungAndOldApp extends App {
                        new Member(2222, "Nero", 37,   Some(68)),
                        new Member(3333, "Gaga", 1986, None))
 
-  val (recents, ancients) = (???, ???) // TODO: replace (???, ???) with an appropriate method call
-  // TODO: Uncomment the following lines.
-  // println("RECENT:")
-  // recents.foreach(println)
-  // println("ANCIENT:")
-  // ancients.foreach(println)
+  val (recents, ancients) = (members.partition(_.yearOfBirth >= 1980), members.partition(_.yearOfBirth < 1980))
+
+  println("RECENT:")
+  recents._1.foreach(println)
+  println("ANCIENT:")
+  ancients._1.foreach(println)
 
 }

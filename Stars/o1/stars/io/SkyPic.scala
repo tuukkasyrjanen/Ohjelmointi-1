@@ -25,7 +25,7 @@ object SkyPic {
     * @param skyPic  an image to place the star upon
     * @param star    a star (of magnitude > -2) that should be depicted against the given image */
   def placeStar(skyPic: Pic, star: Star): Pic = {
-    val starPic = Pic star((12.0 / (star.magnitude / 2)), White)
+    val starPic = Pic circle((12.0 / (star.magnitude + 2)), White)
     val yhdistetty = skyPic.place(starPic,star.posIn(skyPic))
     yhdistetty
   }
@@ -40,7 +40,23 @@ object SkyPic {
     * @param bgSize   the width and height, in pixels, of the desired square image */
   def create(skyData: StarMap, bgSize: Int) = {
     val darkSky = rectangle(bgSize, bgSize, Black)
-    skyData.stars.foldLeft(darkSky)(placeStar)
+    val picture = skyData.stars.foldLeft(darkSky)(placeStar)
+    skyData.constellations.foldLeft(picture)(placeConstellation)
+
+
+
   }
 
+  def placeConstellation(skyPic: o1.Pic, constellation: Constellation): o1.Pic ={
+    var tausta = skyPic
+    val coordPairs = constellation.lines
+    //var linevector = Vector[Pic]()
+
+    for (c <- coordPairs) {
+      tausta = line(c._1.coords.toImagePos(skyPic), c._2.coords.toImagePos(skyPic),Yellow).onto(tausta, c._1.coords.toImagePos(skyPic))
+      //linevector = linevector :+ line(c._1.coords.toImagePos(skyPic), c._2.coords.toImagePos(skyPic),Yellow)
+    }
+    //linevector.foldLeft(tausta)( _.onto(_) )
+    tausta
+  }
 }
